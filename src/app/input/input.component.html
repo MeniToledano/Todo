@@ -1,0 +1,32 @@
+<div class="center">
+    <div id="myDIV" class="header">
+        <h3>todo</h3>
+        <input
+                type="text"
+                id="myInput"
+                placeholder="what need to be done?"
+                autocomplete="off"
+                (keyup.enter)="onGetInput()"
+        >
+        <br>
+        <ul >
+
+                <form class="lineTemplate" *ngFor=" let item of list">
+                    <input type="checkbox"
+                           value="{{item}}"
+                           name="{{item}}"
+                           id="{{item}}">
+                    <label for="{{item}}" ondblclick="">  {{  item}}</label>
+
+
+                </form>
+                <br>
+
+        </ul>
+        <footer class="lineTemplate" *ngIf="list.length">{{list.length}}</footer>
+    </div>
+
+</div>
+
+
+
