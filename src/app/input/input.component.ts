@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NotesServices} from "./notes.services";
+import {todo} from "./todo.module";
+import {element} from "protractor";
 
 @Component({
     selector: 'app-input',
@@ -9,10 +11,15 @@ import {NotesServices} from "./notes.services";
 })
 export class InputComponent implements OnInit {
 
-    private inputValue: string;
-    private li;
-    private t: Object;
-    private list : string[] = [];
+    private inputValue: string = "";
+    private presentedList: todo[] = [];
+    private list: todo[] = [];
+    private completedList: todo[] = [];
+    private activeList: todo[] = [];
+    private elem;
+    private completed = false;
+    private active: boolean = true;
+
 
     constructor(private noteService: NotesServices) {
     }
@@ -20,22 +27,62 @@ export class InputComponent implements OnInit {
     ngOnInit() {
     }
 
+    change(index: number): void {
+        this.presentedList[index].completed = !this.presentedList[index].completed;
+
+        this.completedList = [];
+        this.activeList = [];
+
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].completed === true) {
+                this.completedList.push(this.list[i]);
+            } else {
+                this.activeList.push(this.list[i]);
+            }
+        }
+
+    }
+
+    showAll() :void{
+
+        this.active = true;
+        this.presentedList = this.list;
+    }
+
+    showActive():void {
+        this.active = true;
+        this.presentedList = this.activeList;
+    }
+
+    showCompleted():void {
+        this.active = false;
+        this.presentedList = this.completedList;
+
+    }
+
     onGetInput(): void {
 
+        this.elem = document.getElementById("myInput");
+        this.inputValue = this.elem.value;
 
-        this.li = document.createElement("li");
-        this.inputValue = document.getElementById("myInput").value;
-        this.noteService.addNote(this.inputValue);
-       // this.t = document.createTextNode(this.inputValue);
-     //   this.li.appendChild(this.t);
+
         if (this.inputValue === '') {
             alert("You must write something!");
         } else {
-        //    document.getElementById("myUL").appendChild(this.li);
+            const a = new todo(this.inputValue, false, true);
+            this.list.push(a);
+            this.activeList.push(a);
         }
-        document.getElementById("myInput").value= "";
+        if (this.active)
+            this.presentedList = this.list;
+        this.elem.value = "";
 
-        this.list = this.noteService.getAllNotes();
 
+    }
+
+    clearCompleted():void{
+        this.list = this.activeList;
+        this.completedList = [];
+        this.presentedList = this.list;
     }
 }

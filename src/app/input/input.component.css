@@ -1,7 +1,4 @@
 
-* {
-    box-sizing: border-box;
-}
 
 input {
     margin: 0;
@@ -21,29 +18,43 @@ ul {
 }
 
 .center {
-    float: none;
+    /*float: none;*/
     margin-left: auto;
     margin-right: auto;
     width: 500px
 }
 
-ul li {
-    list-style: none;
-
-}
-
 ul form input {
     width: 30px;
     height: 30px;
+}
 
+ul{
+    list-style: none;
+}
+
+.completed{
+    text-line-through: single;
+    color: red;
+}
+.footer {
+    margin: 0;
+    position: center;
+    text-align: center;
+    padding: 12px 8px 12px 40px;
+    background: antiquewhite;
+    width:75%;
+    float: left;
 }
 
 
 .lineTemplate {
+    margin: 0;
     width: 75%;
     padding: 12px 8px 12px 40px;
     float: left;
     font-size: 16px;
     background: antiquewhite;
-}
+    border-bottom: 1px solid black;
 
+}

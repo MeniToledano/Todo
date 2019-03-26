@@ -9,21 +9,35 @@
                 (keyup.enter)="onGetInput()"
         >
         <br>
-        <ul >
+        <ul>
 
-                <form class="lineTemplate" *ngFor=" let item of list">
-                    <input type="checkbox"
-                           value="{{item}}"
-                           name="{{item}}"
-                           id="{{item}}">
-                    <label for="{{item}}" ondblclick="">  {{  item}}</label>
+            <form class="lineTemplate" *ngFor=" let item of presentedList;let i = index">
+                <div *ngIf = "item.condition">
+                <input type="checkbox"
+                       value="{{item.text}}"
+                       name="{{item.text}}"
+                       id="{{item.text}}"
+                       (click) = "change(i)"
+                >
+                <label   [ngClass]="{completed : item.completed  }"  for="{{item.text}}"> {{ item.text}}</label>
+                </div>
 
-
-                </form>
-                <br>
+            </form>
+            <br>
 
         </ul>
-        <footer class="lineTemplate" *ngIf="list.length">{{list.length}}</footer>
+        <footer  class="footer" *ngIf="list.length">
+
+            <span style="float: left">{{activeList.length}} item left</span>
+
+            <ul >
+                <li><a href="#/" (click)="showAll()">all</a></li>
+                <li><a href="#/" (click)="showActive()">active</a></li>
+                <li><a href="#/" (click)="showCompleted()">complete</a></li>
+                <li *ngIf = "completedList.length > 0"><a href="#/" (click)="clearCompleted()">Clear Completed</a></li>
+            </ul>
+
+        </footer>
     </div>
 
 </div>
