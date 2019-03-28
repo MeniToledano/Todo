@@ -1,24 +1,42 @@
 
-
 input {
     margin: 0;
     position: center;
     align-items: center;
-    width: 75%;
-    padding: 12px 8px 12px 40px;
-    float: left;
+    width: 375px;
+    padding: 12px 0px 15px 0px;
+    float: right;
     font-size: 16px;
-    background: antiquewhite;
+    border: transparent;
+
+}
+
+#lbl {
+    position: relative;
+    left: 25px;
+    top: 10px;
+    font-size: 22px;
+}
+
+#header1 {
+
+    position: relative;
+    left: 140px;
+    color: rgba(100, 0, 0, 0.5);
+    font-size: 100px;
+    /*font-family: Arial;*/
+    font-style: italic;
+    margin: 0;
 
 }
 
 ul {
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .center {
-    /*float: none;*/
     margin-left: auto;
     margin-right: auto;
     width: 500px
@@ -29,32 +47,56 @@ ul form input {
     height: 30px;
 }
 
-ul{
-    list-style: none;
-}
 
-.completed{
-    text-line-through: single;
+
+.completed {
+    text-decoration: line-through;
     color: red;
 }
-.footer {
-    margin: 0;
-    position: center;
-    text-align: center;
-    padding: 12px 8px 12px 40px;
-    background: antiquewhite;
-    width:75%;
-    float: left;
-}
 
+.footer {
+    position: relative;
+    margin: 0;
+
+    text-align: left;
+    height: 50px;
+    width: 425px;
+
+    float: left;
+    background: white;
+    border: 1px solid darkgray;
+
+}
 
 .lineTemplate {
-    margin: 0;
-    width: 75%;
-    padding: 12px 8px 12px 40px;
+    height: 50px;
+    width: 425px;
     float: left;
     font-size: 16px;
-    background: antiquewhite;
-    border-bottom: 1px solid black;
-
+    border: 1px solid darkgray;
+    position: relative;
+    background: white;
 }
+
+li {
+    display: inline;
+    margin: 5px;
+    position: relative;
+    left: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#jj {
+    width: 100px;
+    overflow: auto;
+    height: auto;
+    position: relative;
+    left: 10px;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+
+
