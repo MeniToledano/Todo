@@ -3,44 +3,50 @@
         <h3 id="header1">todo</h3>
 
         <form class="lineTemplate">
-            <label id="lbl"> ❯ </label>
-        <input
-
-                type="text"
-                id="myInput"
-                placeholder="what need to be done?"
-                autocomplete="off"
-                (keyup.enter)="onGetInput()"
-        >
+            <label id="lbl">
+                <a (click)="markAll()"
+                   [ngStyle]="{ opacity:( list.length === completedList.length && list.length !== 0) ? '1' : '0.5'}">❯</a>
+            </label>
+            <input type="text"
+                   id="myInput"
+                   placeholder="what need to be done?"
+                   autocomplete="off"
+                   (keyup.enter)="onGetInput()"
+            >
+            <input type="text" style="visibility: hidden">
         </form>
-        <br>
-        <ul>
 
+        <br>
+
+        <ul>
             <form class="lineTemplate" *ngFor=" let item of presentedList;let i = index">
-                <div *ngIf = "item.condition" id="h">
-                <input style="float: left"
-                        type="checkbox"
-                       value="{{item.text}}"
-                       name="{{item.text}}"
-                       id="{{item.text}}"
-                       (click) = "change(i)"
-                >
-                <label id="jj"   [ngClass]="{completed : item.completed  }"  for="{{item.text}}" > {{ item.text}}</label>
+                <div *ngIf="item.condition" id="h">
+                    <input style="float: left"
+                           [checked]="item.completed"
+                           type="checkbox"
+                           value="{{item.text}}"
+                           name="{{item.text}}"
+                           id="{{item.text}}"
+                           (click)="change(i)"
+                    >
+                    <label id="jj" [ngClass]="{completed : item.completed  }" for="{{item.text}}"> {{
+                        item.text}}</label>
                 </div>
 
             </form>
             <br>
 
         </ul>
-        <footer  class="footer" *ngIf="list.length">
+        <footer class="footer" *ngIf="list.length">
 
-            <span style="float: left">{{activeList.length}} item left</span>
+            <span id="spanFooter">{{activeList.length}} item left</span>
 
-            <ul >
-                <li><a href="#/" (click)="showAll()" >all</a></li>
-                <li><a href="#/" (click)="showActive()" >active</a></li>
-                <li><a href="#/" (click)="showCompleted()" >complete</a></li>
-                <li *ngIf = "completedList.length > 0" ><a href="#/" (click)="clearCompleted()" style="float: right">Clear Completed</a></li>
+            <ul>
+                <li><a href="#/" (click)="showAll()">all</a></li>
+                <li><a href="#/" (click)="showActive()">active</a></li>
+                <li><a href="#/" (click)="showCompleted()">complete</a></li>
+                <li *ngIf="completedList.length > 0"><a href="#/" (click)="clearCompleted()" style="float: right">Clear
+                    Completed</a></li>
             </ul>
 
         </footer>

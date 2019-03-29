@@ -12,10 +12,17 @@ input {
 }
 
 #lbl {
-    position: relative;
-    left: 25px;
-    top: 10px;
-    font-size: 22px;
+    position: absolute;
+    left: 14px;
+    top: 15px;
+    font-size: 25px;
+
+    transform-origin: right;
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin:right;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin:right;
+
 }
 
 #header1 {
@@ -56,7 +63,7 @@ ul form input {
 
 .footer {
     position: relative;
-    margin: 0;
+    margin: 0px;
 
     text-align: left;
     height: 50px;
@@ -65,9 +72,18 @@ ul form input {
     float: left;
     background: white;
     border: 1px solid darkgray;
-
 }
 
+footer span {
+    float: left;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+footer ul{
+    padding-left: 110px;
+    padding-top: 15px;
+}
 .lineTemplate {
     height: 50px;
     width: 425px;
@@ -95,8 +111,17 @@ a {
     height: auto;
     position: relative;
     left: 10px;
-    padding-top: 5px;
-    padding-right: 5px;
+    top: 5px;
 }
 
+#h{
+    padding: 10px;
+}
+
+#myInput{
+    position: relative;
+    top: 3px;
+    border: none;
+    outline: none;
+}
 

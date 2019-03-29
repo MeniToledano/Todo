@@ -46,17 +46,17 @@ export class InputComponent implements OnInit {
     showAll() :void{
 
         this.active = true;
-        this.presentedList = this.list;
+        this.presentedList = this.list.slice();
     }
 
     showActive():void {
         this.active = true;
-        this.presentedList = this.activeList;
+        this.presentedList = this.activeList.slice();
     }
 
     showCompleted():void {
         this.active = false;
-        this.presentedList = this.completedList;
+        this.presentedList = this.completedList.slice();
 
     }
 
@@ -74,15 +74,43 @@ export class InputComponent implements OnInit {
             this.activeList.push(a);
         }
         if (this.active)
-            this.presentedList = this.list;
+            this.presentedList = this.list.slice();
         this.elem.value = "";
 
 
     }
 
     clearCompleted():void{
-        this.list = this.activeList;
+        this.list = this.activeList.slice();
         this.completedList = [];
-        this.presentedList = this.list;
+        this.presentedList = this.list.slice();
+    }
+
+    markAll():void{
+
+        if(this.completedList.length !== this.list.length &&
+            this.list.length !== 0) {
+            this.completedList=[];
+
+            for (let i = 0; i < this.list.length; i++) {
+                this.list[i].completed = true ;
+                this.completedList.push(this.list[i]);
+            }
+            this.presentedList = this.completedList;
+            this.activeList=[];
+
+        }else{
+
+            this.activeList=[];
+            for (let i = 0; i < this.list.length; i++) {
+                this.list[i].completed = false ;
+                this.activeList.push(this.list[i]);
+            }
+            this.presentedList = this.activeList;
+            this.completedList=[];
+        }
+
+
+
     }
 }
