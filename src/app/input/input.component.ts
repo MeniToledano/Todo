@@ -1,13 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {NotesServices} from "./notes.services";
 import {todo} from "./todo.module";
-import {element} from "protractor";
 
 @Component({
     selector: 'app-input',
     templateUrl: './input.component.html',
-    styleUrls: ['./input.component.css'],
-    providers: [NotesServices]
+    styleUrls: ['./input.component.css']
 })
 export class InputComponent implements OnInit {
 
@@ -17,11 +14,11 @@ export class InputComponent implements OnInit {
     private completedList: todo[] = [];
     private activeList: todo[] = [];
     private elem;
-    private completed = false;
+
     private active: boolean = true;
+    private buttonNum: number = 1;
 
-
-    constructor(private noteService: NotesServices) {
+    constructor() {
     }
 
     ngOnInit() {
@@ -43,18 +40,20 @@ export class InputComponent implements OnInit {
 
     }
 
-    showAll() :void{
-
+    onClickShowAll(): void {
+        this.buttonNum = 1;
         this.active = true;
         this.presentedList = this.list.slice();
     }
 
-    showActive():void {
+    onClickShowActive(): void {
+        this.buttonNum = 2;
         this.active = true;
         this.presentedList = this.activeList.slice();
     }
 
-    showCompleted():void {
+    onClickShowCompleted(): void {
+        this.buttonNum = 3;
         this.active = false;
         this.presentedList = this.completedList.slice();
 
@@ -80,37 +79,61 @@ export class InputComponent implements OnInit {
 
     }
 
-    clearCompleted():void{
+    onClickClearCompleted(): void {
         this.list = this.activeList.slice();
         this.completedList = [];
         this.presentedList = this.list.slice();
     }
 
-    markAll():void{
+    onCursorClickMarkList(): void {
 
-        if(this.completedList.length !== this.list.length &&
+        if (this.completedList.length !== this.list.length &&
             this.list.length !== 0) {
-            this.completedList=[];
+            this.completedList = [];
 
             for (let i = 0; i < this.list.length; i++) {
-                this.list[i].completed = true ;
+                this.list[i].completed = true;
                 this.completedList.push(this.list[i]);
             }
             this.presentedList = this.completedList;
-            this.activeList=[];
+            this.activeList = [];
 
-        }else{
+        } else {
 
-            this.activeList=[];
+            this.activeList = [];
             for (let i = 0; i < this.list.length; i++) {
-                this.list[i].completed = false ;
+                this.list[i].completed = false;
                 this.activeList.push(this.list[i]);
             }
             this.presentedList = this.activeList;
-            this.completedList=[];
+            this.completedList = [];
         }
 
 
-
     }
+
+    onMouseOverAddX(index: number): void {
+        this.presentedList[index].xFlag = true;
+    }
+
+    onMouseNotOverRemoveX(index: number): void {
+        this.presentedList[index].xFlag = false;
+    }
+
+    onClickDeleteTodo(index: number): void {
+        this.presentedList.splice(index, 1);
+
+        if (this.list[index].completed) {
+            for (let i = 0; i < this.completedList.length; i++)
+                if (this.list[index] === this.completedList[i])
+                    this.completedList.splice(i, 1);
+        } else {
+            for (let i = 0; i < this.activeList.length; i++)
+                if (this.list[index] === this.activeList[i])
+                    this.activeList.splice(i, 1);
+        }
+
+        this.list.splice(index, 1);
+    }
+
 }

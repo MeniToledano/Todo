@@ -1,46 +1,28 @@
 
 input {
-    margin: 0;
-    position: center;
-    align-items: center;
     width: 375px;
-    padding: 12px 0px 15px 0px;
+    padding: 12px 0 15px 0;
     float: right;
     font-size: 16px;
-    border: transparent;
-
 }
 
-#lbl {
-    position: absolute;
-    left: 14px;
-    top: 15px;
-    font-size: 25px;
-
-    transform-origin: right;
-    -ms-transform: rotate(90deg);
-    -ms-transform-origin:right;
-    -webkit-transform: rotate(90deg);
-    -webkit-transform-origin:right;
-
+#firstInput {
+    opacity: 0.5;
 }
 
 #header1 {
-
     position: relative;
     left: 140px;
     color: rgba(100, 0, 0, 0.5);
     font-size: 100px;
-    /*font-family: Arial;*/
     font-style: italic;
     margin: 0;
-
 }
 
 ul {
     margin: 0;
     padding: 0;
-    list-style: none;
+
 }
 
 .center {
@@ -49,41 +31,45 @@ ul {
     width: 500px
 }
 
-ul form input {
+ul form div input {
     width: 30px;
     height: 30px;
+    float: left;
 }
-
-
 
 .completed {
     text-decoration: line-through;
-    color: red;
+    color: lightgray;
+    opacity: 0.8;
 }
 
 .footer {
     position: relative;
-    margin: 0px;
-
+    font-size: 13px;
     text-align: left;
-    height: 50px;
+    height: 30px;
     width: 425px;
-
     float: left;
     background: white;
     border: 1px solid darkgray;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
+    0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgba(0, 0, 0, 0.2),
+    0 16px 0 -6px #f6f6f6,
+    0 17px 2px -6px rgba(0, 0, 0, 0.2);
 }
 
 footer span {
     float: left;
     padding-left: 15px;
-    padding-top: 15px;
+    padding-top: 8px;
 }
 
-footer ul{
-    padding-left: 110px;
-    padding-top: 15px;
+footer ul {
+    padding-left: 100px;
+    padding-top: 8px;
 }
+
 .lineTemplate {
     height: 50px;
     width: 425px;
@@ -92,6 +78,48 @@ footer ul{
     border: 1px solid darkgray;
     position: relative;
     background: white;
+    box-shadow: darkgray 0 5px 3px;
+}
+
+.todoTemplate{
+    width: 425px;
+    float: left;
+    font-size: 16px;
+    border: 1px solid darkgray;
+    position: relative;
+    background: white;
+    box-shadow: darkgray 0 5px 3px;
+}
+
+.destroy {
+    position: relative;
+    background: transparent;
+    border: transparent;
+    top: 5px;
+    float:right;
+    opacity: 0.5;
+    color: indianred;
+}
+
+#todoInput {
+    display: block;
+    position: absolute;
+    padding-left: 45px;
+    left: 10px;
+    top: 17px;
+}
+
+.row {
+    padding: 10px;
+    position: relative;
+    bottom: 3px;
+}
+
+#myInput {
+    position: relative;
+    top: 3px;
+    border: none;
+    outline: none;
 }
 
 li {
@@ -101,27 +129,52 @@ li {
     left: 30px;
 }
 
-a {
+.buttonLi {
     text-decoration: none;
+    color: gray;
+    border: 1px solid transparent;
+    border-radius: 5px;
 }
 
-#jj {
-    width: 100px;
-    overflow: auto;
-    height: auto;
+a {
+    height: 3px;
+    padding: 3px;
+
+}
+
+li a:hover {
+    border: 1px solid lightgoldenrodyellow;
+}
+
+.clicked {
+    border: 1px solid gray;
+}
+
+#clear {
+    color: gray;
+    border: 1px solid transparent;
+
+    text-decoration: none;
     position: relative;
-    left: 10px;
-    top: 5px;
+    float: right;
+    bottom: 4px;
 }
 
-#h{
-    padding: 10px;
+#clear:hover {
+    border: 1px solid transparent;
+    text-decoration-line: underline;
+
 }
 
-#myInput{
-    position: relative;
-    top: 3px;
-    border: none;
-    outline: none;
-}
+#lbl {
+    position: absolute;
+    left: 5px;
+    top: 18px;
+    font-size: 25px;
+    transform-origin: right;
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin: right;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: right;
 
+}

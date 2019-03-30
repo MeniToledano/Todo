@@ -1,10 +1,10 @@
 <div class="center">
-    <div id="myDIV" class="header">
+    <div>
         <h3 id="header1">todo</h3>
 
-        <form class="lineTemplate">
+        <form class="lineTemplate" id="firstInput">
             <label id="lbl">
-                <a (click)="markAll()"
+                <a (click)="onCursorClickMarkList()"
                    [ngStyle]="{ opacity:( list.length === completedList.length && list.length !== 0) ? '1' : '0.5'}">❯</a>
             </label>
             <input type="text"
@@ -13,39 +13,48 @@
                    autocomplete="off"
                    (keyup.enter)="onGetInput()"
             >
+            <!--bugFix-->
             <input type="text" style="visibility: hidden">
         </form>
 
         <br>
 
+
         <ul>
-            <form class="lineTemplate" *ngFor=" let item of presentedList;let i = index">
-                <div *ngIf="item.condition" id="h">
-                    <input style="float: left"
-                           [checked]="item.completed"
-                           type="checkbox"
-                           value="{{item.text}}"
-                           name="{{item.text}}"
-                           id="{{item.text}}"
-                           (click)="change(i)"
-                    >
-                    <label id="jj" [ngClass]="{completed : item.completed  }" for="{{item.text}}"> {{
-                        item.text}}</label>
+            <form class="todoTemplate" *ngFor=" let todo of presentedList;let i = index"
+                  (mouseover)="onMouseOverAddX(i)"
+                  (mouseout)="onMouseNotOverRemoveX(i)">
+
+
+                <div class="row">
+                    <input  [checked]="todo.completed" type="checkbox" id="{{todo.text}}" (click)="change(i)">
+                    <label id="todoInput" [ngClass]="{completed : todo.completed  }" for="{{todo.text}}"> {{
+                        todo.text}}</label>
+                    <button [ngStyle]="{opacity: todo.xFlag ? 0.5 : 0}" class="destroy" (click)="onClickDeleteTodo(i)">x
+                    </button>
                 </div>
 
             </form>
+
+
             <br>
 
         </ul>
         <footer class="footer" *ngIf="list.length">
 
-            <span id="spanFooter">{{activeList.length}} item left</span>
+            <span *ngIf="activeList.length <= 1">{{activeList.length}} item left</span>
+            <span *ngIf="activeList.length > 1">{{activeList.length}} items left</span>
 
             <ul>
-                <li><a href="#/" (click)="showAll()">all</a></li>
-                <li><a href="#/" (click)="showActive()">active</a></li>
-                <li><a href="#/" (click)="showCompleted()">complete</a></li>
-                <li *ngIf="completedList.length > 0"><a href="#/" (click)="clearCompleted()" style="float: right">Clear
+                <li><a href="#/" (click)="onClickShowAll()" class="buttonLi"
+                       [ngClass]="{clicked: buttonNum === 1}">All</a>
+                </li>
+                <li><a href="#/" (click)="onClickShowActive()" class="buttonLi"
+                       [ngClass]="{clicked: buttonNum === 2}">Active</a></li>
+                <li><a href="#/" (click)="onClickShowCompleted()" class="buttonLi"
+                       [ngClass]="{clicked: buttonNum === 3}">Complete</a>
+                </li>
+                <li *ngIf="completedList.length > 0"><a href="#/" (click)="onClickClearCompleted()" id="clear">Clear
                     Completed</a></li>
             </ul>
 
