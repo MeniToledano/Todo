@@ -6,7 +6,7 @@ input {
     font-size: 16px;
 }
 
-#firstInput {
+#userInput {
     opacity: 0.5;
 }
 
@@ -92,23 +92,25 @@ footer ul {
 }
 
 .destroy {
-    position: relative;
+    /*display: block;*/
+    /*position: relative;*/
     background: transparent;
     border: transparent;
-    top: 5px;
+    /*top: 5px;*/
     float:right;
     opacity: 0.5;
     color: indianred;
 }
 
 #todoInput {
-    display: block;
-    position: absolute;
-    padding-left: 45px;
+    word-break: break-all;
+    position: relative;
     left: 10px;
-    top: 17px;
+    top: 4px;
 }
-
+.rowItems{
+    display: inline;
+}
 .row {
     padding: 10px;
     position: relative;

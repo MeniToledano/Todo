@@ -1,4 +1,3 @@
-import {NotesServices} from "./notes.services";
 
 export class todo {
     constructor(text: string, completed: boolean, condition: boolean) {
