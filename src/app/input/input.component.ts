@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {todo} from "./todo.module";
 
 @Component({
@@ -17,11 +17,39 @@ export class InputComponent implements OnInit {
 
     private active: boolean = true;
     private buttonNum: number = 1;
+    @Input() private key: string;
+    @Output() private changeUserEvent = new EventEmitter<string>();
+    @Output() private deleteUser = new EventEmitter<string>();
 
     constructor() {
     }
 
     ngOnInit() {
+
+
+        if (window.localStorage) {
+            if (localStorage.length > 0) {
+                if (localStorage.getItem(this.key)) {
+                    this.list = JSON.parse(localStorage.getItem(this.key));
+                    this.presentedList = this.list;
+                }
+            }
+            else {
+                localStorage.setItem(this.key, JSON.stringify(this.list));
+            }
+        }
+
+    }
+
+    onChangeUser(): void {
+        this.changeUserEvent.emit('');
+    }
+
+    onDeleteUser(): void {
+        localStorage.removeItem(this.key);
+        this.deleteUser.emit(this.key);
+        this.onChangeUser();
+
     }
 
     change(index: number): void {
@@ -37,6 +65,10 @@ export class InputComponent implements OnInit {
                 this.activeList.push(this.list[i]);
             }
         }
+        if (window.localStorage) {
+            localStorage.setItem(this.key, JSON.stringify(this.list));
+        }
+
 
     }
 
@@ -64,13 +96,17 @@ export class InputComponent implements OnInit {
         this.elem = document.getElementById("myInput");
         this.inputValue = this.elem.value;
 
-
         if (this.inputValue === '') {
             alert("You must write something!");
         } else {
+
             const a = new todo(this.inputValue, false, true);
             this.list.push(a);
             this.activeList.push(a);
+
+            if (window.localStorage) {
+                localStorage.setItem(this.key, JSON.stringify(this.list));
+            }
         }
         if (this.active)
             this.presentedList = this.list.slice();
@@ -83,6 +119,10 @@ export class InputComponent implements OnInit {
         this.list = this.activeList.slice();
         this.completedList = [];
         this.presentedList = this.list.slice();
+        if (window.localStorage) {
+            localStorage.setItem(this.key, JSON.stringify(this.list));
+        }
+
     }
 
     onCursorClickMarkList(): void {

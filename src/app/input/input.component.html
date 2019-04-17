@@ -1,3 +1,5 @@
+<button (click)="onChangeUser()" class="button">Change User</button>
+<button (click)="onDeleteUser()" class="button">Delete User</button>
 <div class="center">
     <div>
         <h3 id="header1">todo</h3>
@@ -25,10 +27,13 @@
                   (mouseover)="onMouseOverAddX(i)"
                   (mouseout)="onMouseNotOverRemoveX(i)">
                 <div class="row">
-                    <input  class="rowItems" [checked]="todo.completed" type="checkbox" id="{{'label-' + i}}" (click)="change(i)">
-                    <label  class="rowItems" id="todoInput" [ngClass]="{completed : todo.completed  }" for="{{'label-' + i}}"> {{
+                    <input class="rowItems" [checked]="todo.completed" type="checkbox" id="{{'label-' + i}}"
+                           (click)="change(i)">
+                    <label class="rowItems" id="todoInput" [ngClass]="{completed : todo.completed  }"
+                           for="{{'label-' + i}}"> {{
                         todo.text}}</label>
-                    <button class="rowItems" [ngStyle]="{opacity: todo.xFlag ? 0.7 : 0}" class="destroy" (click)="onClickDeleteTodo(i)">x
+                    <button class="rowItems" [ngStyle]="{opacity: todo.xFlag ? 0.7 : 0}" class="destroy"
+                            (click)="onClickDeleteTodo(i)">x
                     </button>
                 </div>
             </form>

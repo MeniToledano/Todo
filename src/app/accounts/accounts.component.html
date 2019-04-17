@@ -1,0 +1,21 @@
+<div class="center1">
+    <h3>Add new TODO list, What is your name?</h3>
+    <form id="userName">
+
+
+        <input type="text"
+               id="inputTag"
+               placeholder="Enter your name"
+               autocomplete="off"
+        >
+        <button (click)="onClickAdd()" class="button1">Add</button>
+    </form>
+
+    <h3>Already have your list? choose your name:</h3>
+    <form *ngFor=" let name of listOfNames;let i = index">
+        <div>
+            <button (click)="onNameClick(i)" class="button1">{{name}}</button>
+
+        </div>
+    </form>
+</div>

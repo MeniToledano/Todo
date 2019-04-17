@@ -18,7 +18,17 @@ input {
     font-style: italic;
     margin: 0;
 }
-
+.button {
+    background-color: lightcoral;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px;
+}
 ul {
     margin: 0;
     padding: 0;
