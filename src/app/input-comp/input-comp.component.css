@@ -1,0 +1,47 @@
+#userInput {
+    opacity: 0.5;
+}
+
+.lineTemplate {
+    height: 50px;
+    width: 425px;
+    float: left;
+    font-size: 16px;
+    border: 1px solid darkgray;
+    position: relative;
+    background: white;
+    box-shadow: darkgray 0 5px 3px;
+}
+
+#lbl {
+    position: absolute;
+    left: 5px;
+    top: 18px;
+    font-size: 25px;
+    transform-origin: right;
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin: right;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: right;
+
+}
+
+#myInput {
+    position: relative;
+    top: 3px;
+    border: none;
+    outline: none;
+}
+
+input {
+    width: 375px;
+    padding: 12px 0 15px 0;
+    float: right;
+    font-size: 16px;
+}
+
+a {
+    height: 3px;
+    padding: 3px;
+
+}

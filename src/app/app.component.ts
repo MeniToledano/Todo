@@ -1,4 +1,5 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, ElementRef} from '@angular/core';
+import {ListsService} from "./lists.service";
 
 @Component({
     selector: 'app-root',
@@ -9,7 +10,8 @@ export class AppComponent implements AfterViewInit {
     private chosenKey: string;
     private nameToRemove: string;
 
-    constructor(private elementRef: ElementRef) {
+    constructor(private elementRef: ElementRef,
+                private listsService : ListsService) {
     }
 
     ngAfterViewInit(): void {

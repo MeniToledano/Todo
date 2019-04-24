@@ -1,0 +1,91 @@
+.footer {
+    position: relative;
+    font-size: 13px;
+    text-align: left;
+    height: 30px;
+    width: 425px;
+    float: left;
+    background: white;
+    border: 1px solid darkgray;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
+    0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgba(0, 0, 0, 0.2),
+    0 16px 0 -6px #f6f6f6,
+    0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}
+
+footer span {
+    float: left;
+    padding-left: 15px;
+    padding-top: 8px;
+}
+
+footer ul {
+    padding-left: 100px;
+    padding-top: 8px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+/*as*/
+.button {
+    background-color: lightcoral;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px;
+}
+
+#clear {
+    color: gray;
+    border: 1px solid transparent;
+
+    text-decoration: none;
+    position: relative;
+    float: right;
+    bottom: 4px;
+}
+
+.clicked {
+    border: 1px solid gray;
+}
+
+li {
+    display: inline;
+    margin: 5px;
+    position: relative;
+    left: 30px;
+}
+
+.buttonLi {
+    text-decoration: none;
+    color: gray;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+li a:hover {
+    border: 1px solid lightgoldenrodyellow;
+}
+
+a {
+    height: 3px;
+    padding: 3px;
+
+}
+
+a:focus {
+    border: 1px solid gray;
+
+}
+
+a:target {
+    border: 1px solid gray;
+}

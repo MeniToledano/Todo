@@ -1,0 +1,22 @@
+<button (click)="onChangeUser()" class="button">Change User</button>
+<button (click)="onDeleteUser()" class="button">Delete User</button>
+<div class="center">
+    <div>
+        <h3 id="header1">todo</h3>
+        <app-input-comp (updateCompletedTasks)="taskComplete = $event"></app-input-comp>
+        <br>
+
+        <form *ngFor=" let todo of listsService.list;let i = index"
+              (mouseover)="onMouseOverAddX(i)" (mouseout)="onMouseNotOverRemoveX(i)">
+            <app-todo-entry *ngIf="todo.completed !== taskState" [task]="todo" [index]="i" class="todoTemplate"
+                            (numberOfTaskCompleted)="taskComplete = $event"></app-todo-entry>
+        </form>
+        <br>
+        <app-footer (showList)="onShowList( $event)" [itemsLeft]="taskComplete"></app-footer>
+
+    </div>
+
+</div>
+
+
+

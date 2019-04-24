@@ -1,0 +1,65 @@
+
+#header1 {
+    position: relative;
+    left: 140px;
+    color: rgba(100, 0, 0, 0.5);
+    font-size: 100px;
+    font-style: italic;
+    margin: 0;
+}
+
+/*delete & change button*/
+.button {
+    background-color: lightcoral;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px
+}
+
+
+li {
+    display: inline;
+    margin: 5px;
+    position: relative;
+    left: 30px;
+}
+
+.buttonLi {
+    text-decoration: none;
+    color: gray;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+li a:hover {
+    border: 1px solid lightgoldenrodyellow;
+}
+
+
+.todoTemplate{
+    width: 425px;
+    float: left;
+    font-size: 16px;
+    border: 1px solid darkgray;
+    position: relative;
+    background: white;
+    box-shadow: darkgray 0 5px 3px;
+}
+
+#clear:hover {
+    border: 1px solid transparent;
+    text-decoration-line: underline;
+
+}
+

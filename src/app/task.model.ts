@@ -1,5 +1,5 @@
 
-export class todo {
+export class TaskModel {
     constructor(text: string, completed: boolean, condition: boolean) {
         this.text = text;
         this.completed = completed;

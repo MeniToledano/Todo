@@ -1,0 +1,10 @@
+<div class="row">
+    <input class="rowItems" [checked]="task.completed" type="checkbox" id="{{'label-' + index}}"
+           (click)="changeTaskState(index)">
+    <label class="rowItems" id="todoInput" [ngClass]="{completed : task.completed  }"
+           for="{{'label-' + index}}"> {{
+        task.text}}</label>
+    <button class="rowItems" [ngStyle]="{opacity: task.xFlag ? 0.7 : 0}" class="destroy"
+            (click)="onClickDeleteTodo(index)">x
+    </button>
+</div>

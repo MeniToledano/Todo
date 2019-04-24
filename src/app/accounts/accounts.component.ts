@@ -20,7 +20,6 @@ export class AccountsComponent implements OnInit {
     ngOnInit() {
         this.firstKey = "usersTODO";
 
-
         if (window.localStorage) {
             if (localStorage.length > 0) {
                 if (localStorage.getItem(this.firstKey))
@@ -55,9 +54,11 @@ export class AccountsComponent implements OnInit {
     }
 
     onRemoveName(name: string): void {
-        this.listOfNames.splice(this.listOfNames.indexOf(name), 1);
-        localStorage.setItem(this.firstKey, JSON.stringify(this.listOfNames));
-
+        let temp = this.listOfNames.indexOf(name);
+        if (temp >= 0) {
+            this.listOfNames.splice(temp, 1);
+            localStorage.setItem(this.firstKey, JSON.stringify(this.listOfNames));
+        }
 
     }
 }

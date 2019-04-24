@@ -1,0 +1,17 @@
+<form class="lineTemplate" id="userInput">
+    <label id="lbl">
+        <a (click)="onCursorClickMarkList()"
+           [ngStyle]="{ opacity: listsService.list.length !== 0 ? '1' : '0.5'}"
+        >
+            ❯
+        </a>
+    </label>
+    <input type="text"
+           id="myInput"
+           placeholder="what need to be done?"
+           autocomplete="off"
+           (keyup.enter)="onGetInput()"
+    >
+    <!--bugFix-->
+    <input type="text" style="visibility: hidden">
+</form>
