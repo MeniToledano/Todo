@@ -21,7 +21,7 @@ export class AccountsComponent implements OnInit {
 
     ngOnInit() {
         this.firstKey = "usersTODO";
-        this.listOfNames = this.storageManagerService.initilize(this.firstKey, this.listOfNames);
+        this.listOfNames = JSON.parse(this.storageManagerService.initilize(this.firstKey));
 
         if (this.deleteName) {
             this.onRemoveName(this.deleteName);

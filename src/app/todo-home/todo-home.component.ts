@@ -23,9 +23,11 @@ export class TodoHomeComponent implements OnInit {
 
     ngOnInit() {
         this.listsService.key = this.key;
-        this.listsService.list = this.storageManagerService.initilize(this.listsService.key, this.listsService.list);
+        this.listsService.list = JSON.parse(this.storageManagerService.initilize(this.listsService.key));
+
         if (this.listsService.list)
             this.taskComplete = this.listsService.list.length - this.listsService.getNumOfCompTask();
+
     }
 
     onChangeUser(): void {

@@ -1,43 +1,37 @@
 export class StorageManagerService {
 
 
-    getData(key: any): any {
+    getData(key: string): string {
 
         if (window.localStorage)
-            return JSON.parse(localStorage.getItem(key));
+            return localStorage.getItem(key);
         else
-            alert("local storage un-accessable!");
+            alert("local storage inaccessible!");
     }
 
-    setData(key: any, value: any): void {
+    setData(key: string, value: string): void {
         if (window.localStorage)
             localStorage.setItem(key, value);
         else
-            alert("local storage un-accessable!");
+            alert("local storage inaccessible!");
 
     }
 
-    deleteData(key : any) : void{
+    deleteData(key : string) : void{
         localStorage.removeItem(key);
 
     }
-    initilize(key :any ,value: any): any {
+    initilize(key :string): string {
 
         if (window.localStorage) {
             if (localStorage.length > 0) {
-                if (localStorage.getItem(key)) {
-                    value = this.getData(key);
-                    return value;
-                }
-                else {
-                    value =[];
-                    this.setData(key, JSON.stringify(value));
-                }
+                if (localStorage.getItem(key))
+                    return this.getData(key);
+                else
+                    this.setData(key, '');
             }
         }
-
-        return value;
+        return '';
     }
-
 
 }
