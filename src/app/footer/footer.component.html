@@ -5,6 +5,7 @@
         <li><a href="#" (click)="showAllTasks()" class="buttonLi">All</a></li>
         <li><a href="#" (click)="showActiveTasks()" class="buttonLi">Active</a></li>
         <li><a href="#" (click)="showCompletedTaks()" class="buttonLi">Complete</a></li>
-        <li *ngIf="itemsLeft !== this.listsService.list.length "><a href="#" (click)="clearCompletedTasks()" id="clear">Clear Completed</a></li>
+        <li *ngIf="itemsLeft !== this.listsService.list.length "><a href="#" (click)="clearCompletedTasks()" id="clear">Clear
+            Completed</a></li>
     </ul>
 </footer>

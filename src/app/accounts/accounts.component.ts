@@ -1,9 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {StorageManagerService} from "../services/storage-manager.service";
 
 @Component({
     selector: 'app-accounts',
     templateUrl: './accounts.component.html',
     styleUrls: ['./accounts.component.css']
+
 })
 export class AccountsComponent implements OnInit {
 
@@ -14,20 +16,12 @@ export class AccountsComponent implements OnInit {
     @Input() private deleteName: string = '';
     @Output() private key = new EventEmitter<string>();
 
-    constructor() {
+    constructor(private storageManagerService: StorageManagerService) {
     }
 
     ngOnInit() {
         this.firstKey = "usersTODO";
-
-        if (window.localStorage) {
-            if (localStorage.length > 0) {
-                if (localStorage.getItem(this.firstKey))
-                    this.listOfNames = JSON.parse(localStorage.getItem(this.firstKey));
-                else
-                    localStorage.setItem(this.firstKey, JSON.stringify(this.listOfNames));
-            }
-        }
+        this.listOfNames = this.storageManagerService.initilize(this.firstKey, this.listOfNames);
 
         if (this.deleteName) {
             this.onRemoveName(this.deleteName);
@@ -46,7 +40,9 @@ export class AccountsComponent implements OnInit {
             this.listOfNames.push(this.nameInput);
             this.element.value = "";
         }
-        localStorage.setItem(this.firstKey, JSON.stringify(this.listOfNames));
+        this.storageManagerService.setData(this.firstKey, JSON.stringify(this.listOfNames));
+
+
     }
 
     onNameClick(index: number): void {
@@ -57,7 +53,7 @@ export class AccountsComponent implements OnInit {
         let temp = this.listOfNames.indexOf(name);
         if (temp >= 0) {
             this.listOfNames.splice(temp, 1);
-            localStorage.setItem(this.firstKey, JSON.stringify(this.listOfNames));
+            this.storageManagerService.setData(this.firstKey, JSON.stringify(this.listOfNames));
         }
 
     }

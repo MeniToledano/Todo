@@ -4,7 +4,7 @@
     <label class="rowItems" id="todoInput" [ngClass]="{completed : task.completed  }"
            for="{{'label-' + index}}"> {{
         task.text}}</label>
-    <button class="rowItems" [ngStyle]="{opacity: task.xFlag ? 0.7 : 0}" class="destroy"
+    <button class="rowItems" [ngStyle]="{opacity: task.showXBtn ? 0.7 : 0}" class="destroy"
             (click)="onClickDeleteTodo(index)">x
     </button>
 </div>

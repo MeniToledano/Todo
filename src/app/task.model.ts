@@ -4,12 +4,12 @@ export class TaskModel {
         this.text = text;
         this.completed = completed;
         this.condition = condition;
-        this.xFlag=false;
+        this.showXBtn=false;
     }
 
     public text: string;
     public completed: boolean;
     public condition: boolean;
-    public xFlag:boolean;
+    public showXBtn:boolean;
 
 }

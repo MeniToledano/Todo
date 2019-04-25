@@ -1,3 +1,3 @@
 <app-accounts *ngIf="!chosenKey" (key)="onGetKey($event)" [deleteName]="nameToRemove"></app-accounts>
 <app-todo-home *ngIf="chosenKey" [key]="chosenKey" (deleteUser)="onDeleteUser($event)"
-           (changeUserEvent)="chosenKey=$event"></app-todo-home>
+           (changeUserEvent)="onGetKey($event)"></app-todo-home>

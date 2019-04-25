@@ -1,14 +1,15 @@
 <div class="center1">
     <h3>Add new TODO list, What is your name?</h3>
-    <form id="userName">
+    <div id="userName">
 
         <input type="text"
                id="inputTag"
                placeholder="Enter your name"
                autocomplete="off"
+               (keydown.enter)="onClickAdd()"
         >
-        <button (click)="onClickAdd()" class="button1">Add</button>
-    </form>
+        <button type="button" (click)="onClickAdd()" class="button1">Add</button>
+    </div>
 
     <h3>Already have your list? choose your name:</h3>
     <form *ngFor=" let name of listOfNames;let i = index">

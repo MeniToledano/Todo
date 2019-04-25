@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, ElementRef} from '@angular/core';
-import {ListsService} from "./lists.service";
+import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
+import {ListsService} from "./services/lists.service";
 
 @Component({
     selector: 'app-root',
@@ -11,7 +11,7 @@ export class AppComponent implements AfterViewInit {
     private nameToRemove: string;
 
     constructor(private elementRef: ElementRef,
-                private listsService : ListsService) {
+                private listsService: ListsService) {
     }
 
     ngAfterViewInit(): void {
@@ -26,4 +26,6 @@ export class AppComponent implements AfterViewInit {
     onDeleteUser(userName: string): void {
         this.nameToRemove = userName;
     }
+
+
 }

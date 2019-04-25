@@ -1,10 +1,10 @@
-import {Todo} from "./task.model";
+import {TaskModel} from "../task.model";
 
 export class ListsService {
 
-    key: string = "";
-    list: Todo[] = [];
-    numberOfCompletedTasks: number = 0;
+   public key: string = "";
+   public list: TaskModel[] = [];
+   public numberOfCompletedTasks: number = 0;
 
     getNumOfCompTask(): number {
         this.numberOfCompletedTasks = 0;

@@ -1,18 +1,21 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {ListsService} from "../lists.service";
+import {ListsService} from "../services/lists.service";
 import {TaskModel} from "../task.model";
+import {StorageManagerService} from "../services/storage-manager.service";
 
 @Component({
     selector: 'app-footer',
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.css']
+
 })
 export class FooterComponent {
 
     @Output() private showList = new EventEmitter<boolean>();
     @Input() private itemsLeft: number = 0;
 
-    constructor(private listsService: ListsService) {
+    constructor(private listsService: ListsService,
+                private storageManagerService: StorageManagerService) {
     }
 
     showAllTasks(): void {
@@ -38,9 +41,9 @@ export class FooterComponent {
         }
         this.listsService.list = tempArr;
         this.itemsLeft = this.listsService.list.length;
-        if (window.localStorage) {
-            localStorage.setItem(this.listsService.key, JSON.stringify(this.listsService.list));
-        }
+
+        this.storageManagerService.setData(this.listsService.key, JSON.stringify(this.listsService.list));
+
     }
 
 }
